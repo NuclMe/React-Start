@@ -30,13 +30,13 @@ export default class App extends Component {
     }
         addCar(){
             const { state: {array} } =  this
-            const lastElement = array[array.length -1]
+            // const lastElement = array[array.length -1]
             this.setState({
                 array: [
                     ...this.state.array,
                     {
-                    id: lastElement.id + 1,
-                    text: lastElement.text + lastElement.id + 1
+                    color: 'blue',
+                    model: 'New Car'
                     }
                 ]
             })
@@ -45,18 +45,35 @@ export default class App extends Component {
         removeCar(){
             const {array,title,count} = this.state
             this.setState({
-                array:array.slice(0,array.length -1)            
+                array: array.slice(1)           
             })
         }
+
+        filterCar(){    
+            const{ state: {array}}=this
+            const sort = this.state.color
+            const sortParam = this.state.color = 'blue'
+                this.setState({                                                         
+                    array: array.filter(sort => {
+                        return sortParam
+                    })
+                })
+        }
+        
         
         render(){
             return(
                 <div>
                     <CarList arr={this.state.array}/> 
-                        <button style={{ padding: 20 }} onClick={this.addCar.bind(this)}>ADD ME
-                     
+                        <button style={{ padding: 20 }} onClick={this.addCar.bind(this)}>
+                        ADD ME
                         </button>
-                        <button style={{ padding: 20 }} onClick={this.removeCar.bind(this)}>REMOVE ME</button>
+                        <button style={{ padding: 20 }} onClick={this.removeCar.bind(this)}>
+                            REMOVE ME
+                        </button>
+                        <button style={{ padding: 20 }} onClick={this.filterCar.bind(this)}>
+                           FILTER
+                        </button>
                     </div>  
             )       
          }

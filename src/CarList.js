@@ -10,14 +10,14 @@ const styles = {
 
 export default class List extends Component {
     mapElement = (object) => {
-        return <CarElements key={object.id} text={object.model}/>
+        return <CarElements key={object.id} text={object.model} color={object.color}/>
     }
 
     render() {
         return (
             <div>
                 <ul style={styles.text}>
-                    {this.props.arr.map(({ id, model }) => <CarElements key={id} text={model}/>)}
+                    {this.props.arr.map(({ id, model,color }) => <CarElements key={id} text={model} color={color}/>)}
                 </ul>
             </div>
         )
