@@ -26,11 +26,15 @@ export default class App extends Component {
                 model: "Mercedes",
                 color: 'red',
             },    
+            {
+                id: 4,
+                model: "ZAZ",
+                color: 'blue',
+            },    
         ]
     }
         addCar(){
             const { state: {array} } =  this
-            // const lastElement = array[array.length -1]
             this.setState({
                 array: [
                     ...this.state.array,
@@ -49,17 +53,14 @@ export default class App extends Component {
             })
         }
 
+       
         filterCar(){    
             const{ state: {array}}=this
-            const sort = this.state.color
-            const sortParam = this.state.color = 'blue'
-                this.setState({                                                         
-                    array: array.filter(sort => {
-                        return sortParam
-                    })
+                 this.setState({                                                                             
+                  array:array.filter(item => item.color == 'blue') 
                 })
+
         }
-        
         
         render(){
             return(
